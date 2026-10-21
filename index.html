@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR" class="h-full select-none">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STRUCTUM — Sistema de Gestão Empresarial [v3.4.2]</title>
+    <meta name="description" content="STRUCTUM — Plataforma corporativa empresarial de engenharia, gestão estrutural de ativos e laudos técnicos industriais com backend Fastify, Zod e Prisma." />
+    <meta property="og:title" content="STRUCTUM" />
+    <meta property="og:description" content="STRUCTUM — Plataforma corporativa empresarial de engenharia, gestão estrutural de ativos e laudos técnicos industriais com backend Fastify, Zod e Prisma." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- Fontes do Sistema Windows / Fluent UI & Material Symbols -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <script>
+      // Suprime avisos transitórios de WebSocket do Vite em ambiente de sandbox/iframe
+      window.addEventListener('error', function(e) {
+        if (e.message && (e.message.includes('WebSocket') || e.message.includes('@vite/client'))) {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+        }
+      }, true);
+      window.addEventListener('unhandledrejection', function(e) {
+        const reason = String(e.reason || '');
+        if (reason.includes('WebSocket') || reason.includes('@vite/client')) {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+        }
+      }, true);
+    </script>
+  </head>
+  <body class="h-full bg-[#0b131f] text-slate-100 antialiased overflow-hidden">
+    <div id="root" class="h-full"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

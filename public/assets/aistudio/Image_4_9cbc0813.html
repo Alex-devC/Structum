@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-secondary-container":"#154786","secondary-fixed-dim":"#aac7ff","outline-variant":"#c4c6cf","on-error":"#ffffff","on-secondary":"#ffffff","inverse-on-surface":"#ebf1ff","on-tertiary-fixed":"#001c39","on-secondary-fixed":"#001b3e","secondary-container":"#8fb7fd","surface-container-highest":"#d9e3f7","error-container":"#ffdad6","primary":"#022448","tertiary-container":"#003a6b","surface-bright":"#f9f9ff","on-background":"#121c2a","primary-fixed":"#d5e3ff","surface-container-high":"#dee9fd","on-error-container":"#93000a","surface-tint":"#455f87","on-tertiary-container":"#5aa6ff","on-surface-variant":"#43474e","outline":"#74777f","secondary":"#335e9f","surface":"#f9f9ff","tertiary-fixed-dim":"#a3c9ff","primary-fixed-dim":"#adc8f5","on-primary-fixed":"#001c3b","on-primary-fixed-variant":"#2d486d","inverse-primary":"#adc8f5","error":"#ba1a1a","secondary-fixed":"#d6e3ff","primary-container":"#1e3a5f","inverse-surface":"#273140","background":"#f9f9ff","surface-dim":"#d0daef","tertiary":"#002447","on-tertiary":"#ffffff","surface-variant":"#d9e3f7","on-secondary-fixed-variant":"#144685","on-tertiary-fixed-variant":"#004883","on-surface":"#121c2a","on-primary-container":"#8aa4cf","surface-container-low":"#eff3ff","surface-container":"#e6eeff","surface-container-lowest":"#ffffff","on-primary":"#ffffff","tertiary-fixed":"#d3e3ff"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-md":"0.5rem","space-lg":"0.75rem","gutter":"0.5rem","margin":"0.5rem","space-sm":"0.25rem","space-xs":"0.125rem","space-xl":"1rem"},"fontFamily":{"code-sm":["Consolas"],"label-lg":["Segoe UI"],"body-sm":["Segoe UI"],"body-lg":["Segoe UI"],"headline-lg":["Segoe UI"],"headline-md":["Segoe UI"],"headline-sm":["Segoe UI"],"body-md":["Segoe UI"],"label-sm":["Segoe UI"],"label-md":["Segoe UI"]},"fontSize":{"code-sm":["11px",{"lineHeight":"14px","fontWeight":"400"}],"label-lg":["12px",{"lineHeight":"16px","fontWeight":"600"}],"body-sm":["11px",{"lineHeight":"14px","fontWeight":"400"}],"body-lg":["13px",{"lineHeight":"18px","fontWeight":"400"}],"headline-lg":["16px",{"lineHeight":"22px","fontWeight":"600"}],"headline-md":["14px",{"lineHeight":"18px","fontWeight":"600"}],"headline-sm":["13px",{"lineHeight":"16px","fontWeight":"600"}],"body-md":["12px",{"lineHeight":"16px","fontWeight":"400"}],"label-sm":["10px",{"lineHeight":"12px","letterSpacing":"0.02em","fontWeight":"500"}],"label-md":["11px",{"lineHeight":"14px","fontWeight":"500"}]}}}}</script></head><body class="bg-surface-container font-body-md text-on-surface select-none overflow-x-hidden"><header class="fixed top-0 left-0 right-0 z-50 h-[152px] bg-surface flex flex-col border-b border-outline-variant/60 shadow-[0_1px_4px_rgba(0,0,0,0.06)]"><div class="h-8 bg-surface-container-highest border-b border-outline-variant/40 flex items-center justify-between px-space-md"><div class="flex items-center gap-space-md"><img alt="STRUCTUM Windows App Icon" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WJ3vIHSXYdLMgVZGhqJ7rviLQ9pH545RTOOoKRTMJk9pZYqT8NiFQgRJSXT30pDFCAatMCM4y17cFvLflXC3Lf65kxvYvMxy9EAmhFg1J0qwXKFlInYWm8C_VO4ll0NXIQqA1vB-MzrwOdzW0atz8KAmGDbep5fTb2vv8bDgTbsA_UiLViGb6W9bqvJeegLke6HxClFIU0GZQ8D1fxwjfkwsIZoVXgqCn4s8iN4Tx92uQsaD-KD4isenvU"/><div class="flex items-center gap-space-xs text-on-surface-variant border-r border-outline-variant/50 pr-space-md"><button class="p-space-xs hover:bg-surface-container-high rounded text-on-surface-variant hover:text-on-surface" title="Salvar (Ctrl+S)" type="button"><span class="material-symbols-outlined text-[16px]">save</span></button><button class="p-space-xs hover:bg-surface-container-high rounded text-on-surface-variant hover:text-on-surface" title="Desfazer (Ctrl+Z)" type="button"><span class="material-symbols-outlined text-[16px]">undo</span></button><button class="p-space-xs hover:bg-surface-container-high rounded text-on-surface-variant hover:text-on-surface" title="Refazer (Ctrl+Y)" type="button"><span class="material-symbols-outlined text-[16px]">redo</span></button><button class="p-space-xs hover:bg-surface-container-high rounded text-on-surface-variant hover:text-on-surface" title="Atualizar Registros (F5)" type="button"><span class="material-symbols-outlined text-[16px]">refresh</span></button></div><span class="font-label-md text-label-md text-on-surface truncate">STRUCTUM — Sistema de Gestão Empresarial v3.4.2 [Ambiente de Produção]</span></div><div class="flex items-center h-full"><div class="flex items-center gap-space-md px-space-md"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><span class="font-label-sm text-label-sm text-on-surface-variant hidden lg:inline">Alex Longo</span></div><div class="flex items-center h-full ml-space-sm"><button class="w-11 h-8 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface" title="Minimizar" type="button"><span class="material-symbols-outlined text-[16px]">minimize</span></button><button class="w-11 h-8 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface" title="Maximizar" type="button"><span class="material-symbols-outlined text-[16px]">check_box_outline_blank</span></button><button class="w-11 h-8 flex items-center justify-center text-on-surface-variant hover:bg-error hover:text-on-error" title="Fechar" type="button"><span class="material-symbols-outlined text-[16px]">close</span></button></div></div></div><div class="h-[26px] bg-surface-container-low border-b border-outline-variant/40 flex items-center px-space-xs"><button class="bg-primary-container text-on-primary font-label-md text-label-md px-space-lg h-full flex items-center justify-center hover:bg-primary transition-colors" type="button">Arquivo</button><nav class="flex items-center h-full" data-active-classes="bg-surface border-t-2 border-primary-container text-primary font-bold shadow-sm"><a class="px-space-lg h-full flex items-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md" data-path="painel-geral" href="#">Início</a><a class="px-space-lg h-full flex items-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md" data-path="laudos-tecnicos" href="#">Laudos</a><a class="px-space-lg h-full flex items-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md" data-path="cadastro-de-clientes" href="#">Clientes</a><a class="px-space-lg h-full flex items-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md" data-path="relatorios-gerenciais" href="#">Relatórios</a><a class="px-space-lg h-full flex items-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md" data-path="configuracoes-do-sistema" href="#">Administração</a><a class="px-space-lg h-full flex items-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md" data-path="ajuda-e-suporte" href="#">Ajuda / Sobre</a></nav></div><div class="h-[94px] bg-surface-container-lowest flex items-stretch px-space-xs overflow-x-auto divide-x divide-outline-variant/40"><div class="flex flex-col justify-between px-space-md py-space-xs min-w-[190px]"><div class="flex items-center gap-space-xs flex-1"><button class="flex flex-col items-center justify-center w-[58px] h-[66px] rounded hover:bg-surface-container-high hover:text-on-surface p-space-xs" type="button"><span class="material-symbols-outlined text-[30px] text-primary">add_box</span><span class="font-label-sm text-label-sm mt-space-xs text-on-surface text-center leading-none">Novo Laudo</span></button><button class="flex flex-col items-center justify-center w-[58px] h-[66px] rounded hover:bg-surface-container-high hover:text-on-surface p-space-xs" type="button"><span class="material-symbols-outlined text-[30px] text-secondary">edit_note</span><span class="font-label-sm text-label-sm mt-space-xs text-on-surface text-center leading-none">Editar</span></button><button class="flex flex-col items-center justify-center w-[58px] h-[66px] rounded hover:bg-surface-container-high hover:text-on-surface p-space-xs" type="button"><span class="material-symbols-outlined text-[30px] text-error">delete_sweep</span><span class="font-label-sm text-label-sm mt-space-xs text-on-surface text-center leading-none">Excluir</span></button></div><div class="text-center font-label-sm text-label-sm text-on-surface-variant border-t border-outline-variant/30 pt-space-xs">Operações</div></div><div class="flex flex-col justify-between px-space-md py-space-xs min-w-[210px]"><div class="flex flex-col justify-center gap-space-xs flex-1"><button class="flex items-center gap-space-md px-space-sm h-[20px] rounded hover:bg-surface-container-high hover:text-on-surface text-left" type="button"><span class="material-symbols-outlined text-[16px] text-secondary">filter_alt</span><span class="font-label-md text-label-md text-on-surface">Filtrar Registros Ativos</span></button><button class="flex items-center gap-space-md px-space-sm h-[20px] rounded hover:bg-surface-container-high hover:text-on-surface text-left" type="button"><span class="material-symbols-outlined text-[16px] text-secondary">sort_by_alpha</span><span class="font-label-md text-label-md text-on-surface">Classificação Avançada</span></button><button class="flex items-center gap-space-md px-space-sm h-[20px] rounded hover:bg-surface-container-high hover:text-on-surface text-left" type="button"><span class="material-symbols-outlined text-[16px] text-secondary">manage_search</span><span class="font-label-md text-label-md text-on-surface">Localizar Código (Ctrl+F)</span></button></div><div class="text-center font-label-sm text-label-sm text-on-surface-variant border-t border-outline-variant/30 pt-space-xs">Registros</div></div><div class="flex flex-col justify-between px-space-md py-space-xs min-w-[190px]"><div class="flex items-center gap-space-xs flex-1"><button class="flex flex-col items-center justify-center w-[58px] h-[66px] rounded hover:bg-surface-container-high hover:text-on-surface p-space-xs" type="button"><span class="material-symbols-outlined text-[30px] text-tertiary">picture_as_pdf</span><span class="font-label-sm text-label-sm mt-space-xs text-on-surface text-center leading-none">Gerar PDF</span></button><button class="flex flex-col items-center justify-center w-[58px] h-[66px] rounded hover:bg-surface-container-high hover:text-on-surface p-space-xs" type="button"><span class="material-symbols-outlined text-[30px] text-secondary">table_view</span><span class="font-label-sm text-label-sm mt-space-xs text-on-surface text-center leading-none">Excel / CSV</span></button><button class="flex flex-col items-center justify-center w-[58px] h-[66px] rounded hover:bg-surface-container-high hover:text-on-surface p-space-xs" type="button"><span class="material-symbols-outlined text-[30px] text-on-surface-variant">print</span><span class="font-label-sm text-label-sm mt-space-xs text-on-surface text-center leading-none">Imprimir</span></button></div><div class="text-center font-label-sm text-label-sm text-on-surface-variant border-t border-outline-variant/30 pt-space-xs">Exportação</div></div><div class="flex flex-col justify-between px-space-md py-space-xs min-w-[160px]"><div class="flex flex-col justify-center gap-space-xs flex-1"><button class="flex items-center gap-space-md px-space-sm h-[20px] rounded hover:bg-surface-container-high hover:text-on-surface text-left" type="button"><span class="material-symbols-outlined text-[16px] text-secondary">visibility</span><span class="font-label-md text-label-md text-on-surface">Painel de Detalhes</span></button><button class="flex items-center gap-space-md px-space-sm h-[20px] rounded hover:bg-surface-container-high hover:text-on-surface text-left" type="button"><span class="material-symbols-outlined text-[16px] text-secondary">splitscreen</span><span class="font-label-md text-label-md text-on-surface">Dividir Exibição</span></button><button class="flex items-center gap-space-md px-space-sm h-[20px] rounded hover:bg-surface-container-high hover:text-on-surface text-left" type="button"><span class="material-symbols-outlined text-[16px] text-secondary">zoom_in</span><span class="font-label-md text-label-md text-on-surface">Grade Compacta (100%)</span></button></div><div class="text-center font-label-sm text-label-sm text-on-surface-variant border-t border-outline-variant/30 pt-space-xs">Visualização</div></div></div></header><aside class="fixed left-0 top-[152px] bottom-[24px] w-64 bg-surface-container-low border-r border-outline-variant/50 z-40 flex flex-col"><div class="h-7 bg-surface-container-highest px-space-md flex items-center justify-between border-b border-outline-variant/40"><span class="font-label-sm text-label-sm font-semibold tracking-wider text-on-surface uppercase">Módulos do Sistema</span><span class="material-symbols-outlined text-[16px] text-on-surface-variant">unfold_more</span></div><nav class="flex-1 p-space-xs overflow-y-auto" data-active-classes="bg-surface-container-high text-primary font-semibold border-l-2 border-primary"><div class="text-[10px] uppercase font-semibold text-on-surface-variant px-space-md py-space-xs tracking-wider">Operacional</div><a class="flex items-center gap-space-md px-space-md py-space-xs text-on-surface-variant hover:bg-surface-container hover:text-on-surface text-body-md font-body-md rounded-none" data-path="painel-geral" href="#"><span class="material-symbols-outlined text-[18px] text-secondary">space_dashboard</span><span>Painel Geral</span></a><a class="flex items-center gap-space-md px-space-md py-space-xs text-on-surface-variant hover:bg-surface-container hover:text-on-surface text-body-md font-body-md rounded-none" data-path="laudos-tecnicos" href="#"><span class="material-symbols-outlined text-[18px] text-secondary">assignment</span><span>Laudos Técnicos</span></a><a class="flex items-center gap-space-md px-space-md py-space-xs text-on-surface-variant hover:bg-surface-container hover:text-on-surface text-body-md font-body-md rounded-none" data-path="cadastro-de-clientes" href="#"><span class="material-symbols-outlined text-[18px] text-secondary">domain</span><span>Cadastro de Clientes</span></a><div class="text-[10px] uppercase font-semibold text-on-surface-variant px-space-md py-space-xs mt-space-md tracking-wider">Gerencial</div><a class="flex items-center gap-space-md px-space-md py-space-xs text-on-surface-variant hover:bg-surface-container hover:text-on-surface text-body-md font-body-md rounded-none" data-path="relatorios-gerenciais" href="#"><span class="material-symbols-outlined text-[18px] text-secondary">query_stats</span><span>Relatórios Gerenciais</span></a><a class="flex items-center gap-space-md px-space-md py-space-xs text-on-surface-variant hover:bg-surface-container hover:text-on-surface text-body-md font-body-md rounded-none" data-path="configuracoes-do-sistema" href="#"><span class="material-symbols-outlined text-[18px] text-secondary">settings</span><span>Configurações do Sistema</span></a></nav><div class="p-space-xs border-t border-outline-variant/40 bg-surface-container"><div class="bg-surface-container-lowest p-space-xs border border-outline-variant/40 text-[11px]"><span class="font-semibold text-primary block">Workspace Ativo:</span><span class="text-on-surface-variant font-code-sm text-code-sm">ENG-PROD-BR01.LOCAL</span></div></div></aside><div class="pl-64"><main class="w-full pt-[152px] pb-[24px] px-space-md min-h-screen bg-surface-container"><div class="flex flex-col w-full text-on-surface select-none">
+<!-- Ribbon Toolbar (Docked WPF Ribbon Layout) -->
+<div class="bg-surface-container-lowest shadow-sm flex flex-col mb-space-xs">
+<!-- Ribbon Tabs Header -->
+<div class="h-6 bg-surface-container-low flex items-center px-space-xs gap-space-xs">
+<button class="px-space-md h-full flex items-center text-on-surface-variant hover:bg-surface-container font-label-md text-label-md" type="button">Início</button>
+<button class="px-space-md h-full flex items-center bg-surface-container-lowest text-primary font-label-md text-label-md font-bold shadow-sm" type="button">Laudos</button>
+<button class="px-space-md h-full flex items-center text-on-surface-variant hover:bg-surface-container font-label-md text-label-md" type="button">Clientes & Ativos</button>
+<button class="px-space-md h-full flex items-center text-on-surface-variant hover:bg-surface-container font-label-md text-label-md" type="button">Normas & Checklist</button>
+<button class="px-space-md h-full flex items-center text-on-surface-variant hover:bg-surface-container font-label-md text-label-md" type="button">Relatórios</button>
+<button class="px-space-md h-full flex items-center text-on-surface-variant hover:bg-surface-container font-label-md text-label-md" type="button">Ferramentas</button>
+</div>
+<!-- Ribbon Action Groups Container (94px Height Standard) -->
+<div class="h-[96px] bg-surface-container-lowest flex items-stretch px-space-xs overflow-x-auto divide-x divide-outline-variant/30">
+<!-- Grupo 1: Ações Principais -->
+<div class="flex flex-col justify-between px-space-sm py-space-xs min-w-[245px]">
+<div class="flex items-center gap-space-xs flex-1">
+<button class="flex flex-col items-center justify-center w-[58px] h-[70px] rounded hover:bg-surface-container-high transition-colors p-space-xs group" id="btn-novo-laudo" type="button">
+<span class="material-symbols-outlined text-[30px] text-primary group-hover:scale-105 transition-transform" style="font-variation-settings: 'FILL' 1;">post_add</span>
+<span class="font-label-sm text-label-sm mt-space-xs text-on-surface text-center leading-tight font-semibold">Novo Laudo</span>
+</button>
+<button class="flex flex-col items-center justify-center w-[56px] h-[70px] rounded hover:bg-surface-container-high transition-colors p-space-xs" type="button">
+<span class="material-symbols-outlined text-[28px] text-secondary">edit_document</span>
+<span class="font-label-sm text-label-sm mt-space-xs text-on-surface text-center leading-tight">Editar</span>
+</button>
+<button class="flex flex-col items-center justify-center w-[56px] h-[70px] rounded hover:bg-surface-container-high transition-colors p-space-xs" type="button">
+<span class="material-symbols-outlined text-[28px] text-on-surface-variant">content_copy</span>
+<span class="font-label-sm text-label-sm mt-space-xs text-on-surface text-center leading-tight">Duplicar</span>
+</button>
+<button class="flex flex-col items-center justify-center w-[58px] h-[70px] rounded hover:bg-surface-container-high transition-colors p-space-xs" type="button">
+<span class="material-symbols-outlined text-[28px] text-secondary">preview</span>
+<span class="font-label-sm text-label-sm mt-space-xs text-on-surface text-center leading-tight">Visualizar</span>
+</button>
+</div>
+<div class="text-center font-label-sm text-label-sm text-on-surface-variant/80 pt-space-xs">Ações Principais</div>
+</div>
+<!-- Grupo 2: Tramitação & Emissão -->
+<div class="flex flex-col justify-between px-space-sm py-space-xs min-w-[215px]">
+<div class="flex items-center gap-space-sm flex-1">
+<button class="flex flex-col items-center justify-center w-[66px] h-[70px] rounded hover:bg-surface-container-high transition-colors p-space-xs" type="button">
+<span class="material-symbols-outlined text-[30px] text-primary" style="font-variation-settings: 'FILL' 1;">approval_delegation</span>
+<span class="font-label-sm text-label-sm mt-space-xs text-primary font-bold text-center leading-tight">Emitir Laudo</span>
+</button>
+<div class="flex flex-col justify-center gap-[2px] flex-1">
+<button class="flex items-center gap-space-xs px-space-xs h-[21px] rounded hover:bg-surface-container-high text-left" type="button">
+<span class="material-symbols-outlined text-[15px] text-secondary">verified_user</span>
+<span class="font-label-md text-label-md text-on-surface truncate">Aprovar Técnico</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-xs h-[21px] rounded hover:bg-surface-container-high text-left" type="button">
+<span class="material-symbols-outlined text-[15px] text-secondary">history_edu</span>
+<span class="font-label-md text-label-md text-on-surface truncate">Revisar Pendência</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-xs h-[21px] rounded hover:bg-error-container text-left text-error" type="button">
+<span class="material-symbols-outlined text-[15px] text-error">cancel</span>
+<span class="font-label-md text-label-md font-semibold truncate">Cancelar Registro</span>
+</button>
+</div>
+</div>
+<div class="text-center font-label-sm text-label-sm text-on-surface-variant/80 pt-space-xs">Tramitação & Emissão</div>
+</div>
+<!-- Grupo 3: Saída & Impressão -->
+<div class="flex flex-col justify-between px-space-sm py-space-xs min-w-[235px]">
+<div class="flex items-center gap-space-xs flex-1">
+<button class="flex flex-col items-center justify-center w-[58px] h-[70px] rounded hover:bg-surface-container-high transition-colors p-space-xs" type="button">
+<span class="material-symbols-outlined text-[30px] text-error" style="font-variation-settings: 'FILL' 1;">picture_as_pdf</span>
+<span class="font-label-sm text-label-sm mt-space-xs text-on-surface text-center leading-tight font-semibold">Exportar PDF</span>
+</button>
+<button class="flex flex-col items-center justify-center w-[56px] h-[70px] rounded hover:bg-surface-container-high transition-colors p-space-xs" type="button">
+<span class="material-symbols-outlined text-[28px] text-on-surface-variant">print</span>
+<span class="font-label-sm text-label-sm mt-space-xs text-on-surface text-center leading-tight">Imprimir</span>
+</button>
+<div class="flex flex-col justify-center gap-[2px] flex-1">
+<button class="flex items-center gap-space-xs px-space-xs h-[21px] rounded hover:bg-surface-container-high text-left" type="button">
+<span class="material-symbols-outlined text-[15px] text-secondary">forward_to_inbox</span>
+<span class="font-label-md text-label-md text-on-surface truncate">Enviar por E-mail</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-xs h-[21px] rounded hover:bg-surface-container-high text-left" type="button">
+<span class="material-symbols-outlined text-[15px] text-secondary">folder_zip</span>
+<span class="font-label-md text-label-md text-on-surface truncate">Gerar Anexo Zip</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-xs h-[21px] rounded hover:bg-surface-container-high text-left" type="button">
+<span class="material-symbols-outlined text-[15px] text-secondary">table_chart</span>
+<span class="font-label-md text-label-md text-on-surface truncate">Exportar Excel (XLSX)</span>
+</button>
+</div>
+</div>
+<div class="text-center font-label-sm text-label-sm text-on-surface-variant/80 pt-space-xs">Saída & Impressão</div>
+</div>
+<!-- Grupo 4: Localizar & Filtro -->
+<div class="flex flex-col justify-between px-space-sm py-space-xs flex-1 min-w-[340px]">
+<div class="flex flex-col justify-center gap-space-xs flex-1">
+<div class="flex items-center gap-space-xs bg-surface-container-lowest px-space-xs h-6 rounded shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-outline">search</span>
+<input class="w-full bg-transparent font-body-sm text-body-sm text-on-surface placeholder-on-surface-variant/70 focus:outline-none" placeholder="Pesquisar laudo, cliente, equipamento, CNPJ..." type="text"/>
+<button class="text-on-surface-variant hover:text-primary" title="Busca avançada" type="button">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+</button>
+</div>
+<div class="flex items-center gap-space-xs">
+<select class="h-6 bg-surface-container-lowest font-body-sm text-body-sm text-on-surface px-space-xs rounded flex-1 focus:outline-none">
+<option>Status: Todos os Estados</option>
+<option>Status: Emitido</option>
+<option>Status: Em Elaboração</option>
+<option>Status: Revisão Pendente</option>
+<option>Status: Aguardando Assinatura</option>
+</select>
+<select class="h-6 bg-surface-container-lowest font-body-sm text-body-sm text-on-surface px-space-xs rounded flex-1 focus:outline-none">
+<option>Período: Últimos 30 dias</option>
+<option>Período: Mês Atual (Maio/2024)</option>
+<option>Período: Primeiro Trimestre 2024</option>
+<option>Período: Ano Corrente 2024</option>
+</select>
+<button class="h-6 px-space-sm bg-surface-container hover:bg-surface-container-high rounded font-label-md text-label-md text-on-surface-variant flex items-center gap-[2px]" type="button">
+<span class="material-symbols-outlined text-[14px]">filter_alt_off</span>
+<span>Limpar</span>
+</button>
+</div>
+</div>
+<div class="text-center font-label-sm text-label-sm text-on-surface-variant/80 pt-space-xs">Localizar & Parâmetros</div>
+</div>
+</div>
+</div>
+<!-- Sub-Ribbon Quick Filter Strip (Outlook Style Desk Bar) -->
+<div class="bg-surface-container-low px-space-sm py-space-xs flex flex-wrap items-center justify-between gap-space-xs mb-space-xs shadow-sm">
+<div class="flex items-center gap-[2px]">
+<button class="px-space-md h-6 rounded bg-primary text-on-primary font-label-md text-label-md font-semibold flex items-center shadow-sm" type="button">Todos (1.482)</button>
+<button class="px-space-md h-6 rounded bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center" type="button">Em Elaboração (28)</button>
+<button class="px-space-md h-6 rounded bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center" type="button">Aguardando Aprovação (14)</button>
+<button class="px-space-md h-6 rounded bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center" type="button">Emitidos / Concluídos (1.396)</button>
+<button class="px-space-md h-6 rounded bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center" type="button">Cancelados (44)</button>
+</div>
+<div class="flex items-center gap-space-xs font-body-sm text-body-sm">
+<span class="text-on-surface-variant font-semibold">Data de:</span>
+<input class="w-20 h-6 bg-surface-container-lowest text-center rounded focus:outline-none font-code-sm text-code-sm" type="text" value="01/05/2024"/>
+<span class="text-on-surface-variant font-semibold">até:</span>
+<input class="w-20 h-6 bg-surface-container-lowest text-center rounded focus:outline-none font-code-sm text-code-sm" type="text" value="24/05/2024"/>
+<span class="text-on-surface-variant ml-space-xs font-semibold">Empresa:</span>
+<select class="h-6 bg-surface-container-lowest rounded px-space-xs text-on-surface focus:outline-none">
+<option>STRUCTUM Matriz SP</option>
+<option>STRUCTUM Inspeções Sul</option>
+<option>STRUCTUM Nordeste Engenharia</option>
+</select>
+<span class="text-on-surface-variant ml-space-xs font-semibold">Técnico:</span>
+<select class="h-6 bg-surface-container-lowest rounded px-space-xs text-on-surface focus:outline-none">
+<option>Todos os Técnicos</option>
+<option>Eng. Alex Fabiano Longo</option>
+<option>Téc. Marcos Vinícius Prado</option>
+<option>Eng. Roberto Albuquerque</option>
+</select>
+<button class="h-6 px-space-md bg-secondary text-on-secondary rounded font-label-md text-label-md hover:bg-secondary-container hover:text-on-secondary-container transition-colors font-semibold flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[14px]">refresh</span>
+<span>Aplicar</span>
+</button>
+<button class="h-6 px-space-xs bg-surface-container-lowest hover:bg-surface-container-high rounded text-on-surface-variant flex items-center" title="Salvar Consulta" type="button">
+<span class="material-symbols-outlined text-[15px]">bookmark_add</span>
+</button>
+</div>
+</div>
+<!-- Workspace Splitter Container: DataGrid (Top/Left) + Docked Details (Right/Bottom) -->
+<div class="grid grid-cols-12 gap-space-xs w-full">
+<!-- WPF DataGrid Workspace Canvas -->
+<div class="col-span-12 xl:col-span-8 flex flex-col bg-surface-container-lowest rounded shadow-sm overflow-hidden">
+<!-- DataGrid Column Headers -->
+<div class="h-7 bg-surface-container-high flex items-center font-label-md text-label-md text-on-surface font-semibold select-none shadow-sm divide-x divide-outline-variant/40">
+<div class="w-7 h-full flex items-center justify-center bg-surface-container-high">
+<input class="w-3 h-3 text-primary rounded-none" type="checkbox"/>
+</div>
+<div class="w-8 h-full flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">play_arrow</span>
+</div>
+<div class="w-32 px-space-xs h-full flex items-center justify-between hover:bg-surface-container-highest cursor-pointer">
+<span>Nº Laudo</span>
+<span class="font-code-sm text-[10px] text-secondary">▲</span>
+</div>
+<div class="w-32 px-space-xs h-full flex items-center justify-between hover:bg-surface-container-highest cursor-pointer">
+<span>Data Emissão</span>
+<span class="material-symbols-outlined text-[13px] text-outline">unfold_more</span>
+</div>
+<div class="flex-1 min-w-[170px] px-space-xs h-full flex items-center justify-between hover:bg-surface-container-highest cursor-pointer">
+<span>Cliente / Razão Social</span>
+<span class="material-symbols-outlined text-[13px] text-outline">filter_alt</span>
+</div>
+<div class="w-32 px-space-xs h-full flex items-center justify-between hover:bg-surface-container-highest cursor-pointer">
+<span>CNPJ / CPF</span>
+<span class="material-symbols-outlined text-[13px] text-outline">unfold_more</span>
+</div>
+<div class="w-48 px-space-xs h-full flex items-center justify-between hover:bg-surface-container-highest cursor-pointer">
+<span>Equipamento / Instalação</span>
+<span class="material-symbols-outlined text-[13px] text-outline">filter_alt</span>
+</div>
+<div class="w-40 px-space-xs h-full flex items-center justify-between hover:bg-surface-container-highest cursor-pointer">
+<span>Técnico Responsável</span>
+<span class="material-symbols-outlined text-[13px] text-outline">unfold_more</span>
+</div>
+<div class="w-32 px-space-xs h-full flex items-center justify-between hover:bg-surface-container-highest cursor-pointer">
+<span>Status</span>
+<span class="material-symbols-outlined text-[13px] text-outline">filter_alt</span>
+</div>
+<div class="w-20 px-space-xs h-full flex items-center justify-center">
+<span>Ações</span>
+</div>
+</div>
+<!-- DataGrid Rows Container (High Density: 28px/row) -->
+<div class="flex flex-col font-body-sm text-body-sm overflow-y-auto max-h-[580px] divide-y divide-outline-variant/20">
+<!-- Linha 1 (ACTIVE / SELECTED ROW) -->
+<div class="h-7 flex items-center bg-secondary-fixed/40 text-on-surface hover:bg-secondary-fixed/60 divide-x divide-outline-variant/20 relative" id="row-selected-laudo">
+<div class="w-7 h-full flex items-center justify-center">
+<input checked="" class="w-3 h-3 text-primary" type="checkbox"/>
+</div>
+<div class="w-8 h-full flex items-center justify-center text-primary font-bold">
+<span class="material-symbols-outlined text-[15px] text-primary">arrow_right</span>
+</div>
+<div class="w-32 px-space-xs truncate font-code-sm text-code-sm font-bold text-primary">LAU-2024-0891</div>
+<div class="w-32 px-space-xs truncate text-on-surface-variant font-code-sm text-code-sm">24/05/2024 14:32</div>
+<div class="flex-1 min-w-[170px] px-space-xs truncate font-semibold">Indústria Metalúrgica Alvorada S.A.</div>
+<div class="w-32 px-space-xs truncate font-code-sm text-code-sm text-on-surface-variant">47.829.102/0001-94</div>
+<div class="w-48 px-space-xs truncate">Transformador Seco 750kVA - Subestação A</div>
+<div class="w-40 px-space-xs truncate">Eng. Alex Fabiano Longo</div>
+<div class="w-32 px-space-xs flex items-center">
+<span class="inline-flex items-center px-[6px] py-[1px] rounded text-[10px] font-semibold bg-primary-container text-on-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim mr-1"></span>Emitido
+            </span>
+</div>
+<div class="w-20 px-space-xs flex items-center justify-center gap-space-xs">
+<button class="text-secondary hover:text-primary" title="Visualizar" type="button"><span class="material-symbols-outlined text-[15px]">visibility</span></button>
+<button class="text-error hover:text-on-error-container" title="Download PDF" type="button"><span class="material-symbols-outlined text-[15px]">picture_as_pdf</span></button>
+<button class="text-on-surface-variant hover:text-primary" title="Editar" type="button"><span class="material-symbols-outlined text-[15px]">edit</span></button>
+</div>
+</div>
+<!-- Linha 2 -->
+<div class="h-7 flex items-center bg-surface-container-lowest hover:bg-surface-container divide-x divide-outline-variant/20">
+<div class="w-7 h-full flex items-center justify-center"><input class="w-3 h-3" type="checkbox"/></div>
+<div class="w-8 h-full flex items-center justify-center text-transparent">·</div>
+<div class="w-32 px-space-xs truncate font-code-sm text-code-sm font-semibold text-primary">LAU-2024-0890</div>
+<div class="w-32 px-space-xs truncate text-on-surface-variant font-code-sm text-code-sm">24/05/2024 11:15</div>
+<div class="flex-1 min-w-[170px] px-space-xs truncate">Condomínio Residencial Solar das Palmeiras</div>
+<div class="w-32 px-space-xs truncate font-code-sm text-code-sm text-on-surface-variant">03.119.845/0001-12</div>
+<div class="w-48 px-space-xs truncate">Sistema SPDA e Malha de Aterramento</div>
+<div class="w-40 px-space-xs truncate">Téc. Marcos Vinícius Prado</div>
+<div class="w-32 px-space-xs flex items-center">
+<span class="inline-flex items-center px-[6px] py-[1px] rounded text-[10px] font-semibold bg-surface-container-highest text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mr-1"></span>Em Elaboração
+            </span>
+</div>
+<div class="w-20 px-space-xs flex items-center justify-center gap-space-xs">
+<button class="text-secondary hover:text-primary" type="button"><span class="material-symbols-outlined text-[15px]">visibility</span></button>
+<button class="text-outline-variant cursor-not-allowed" type="button"><span class="material-symbols-outlined text-[15px]">picture_as_pdf</span></button>
+<button class="text-on-surface-variant hover:text-primary" type="button"><span class="material-symbols-outlined text-[15px]">edit</span></button>
+</div>
+</div>
+<!-- Linha 3 -->
+<div class="h-7 flex items-center bg-surface-container-low hover:bg-surface-container divide-x divide-outline-variant/20">
+<div class="w-7 h-full flex items-center justify-center"><input class="w-3 h-3" type="checkbox"/></div>
+<div class="w-8 h-full flex items-center justify-center text-transparent">·</div>
+<div class="w-32 px-space-xs truncate font-code-sm text-code-sm font-semibold text-primary">LAU-2024-0889</div>
+<div class="w-32 px-space-xs truncate text-on-surface-variant font-code-sm text-code-sm">23/05/2024 18:02</div>
+<div class="flex-1 min-w-[170px] px-space-xs truncate">Logística Integrada Express do Brasil Ltda.</div>
+<div class="w-32 px-space-xs truncate font-code-sm text-code-sm text-on-surface-variant">19.450.812/0003-88</div>
+<div class="w-48 px-space-xs truncate">Quadro Geral de Baixa Tensão (QGBT-Galpão)</div>
+<div class="w-40 px-space-xs truncate">Eng. Alex Fabiano Longo</div>
+<div class="w-32 px-space-xs flex items-center">
+<span class="inline-flex items-center px-[6px] py-[1px] rounded text-[10px] font-semibold bg-secondary-container text-on-secondary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary mr-1"></span>Aguardando Assinatura
+            </span>
+</div>
+<div class="w-20 px-space-xs flex items-center justify-center gap-space-xs">
+<button class="text-secondary hover:text-primary" type="button"><span class="material-symbols-outlined text-[15px]">visibility</span></button>
+<button class="text-error hover:text-on-error-container" type="button"><span class="material-symbols-outlined text-[15px]">picture_as_pdf</span></button>
+<button class="text-on-surface-variant hover:text-primary" type="button"><span class="material-symbols-outlined text-[15px]">edit</span></button>
+</div>
+</div>
+<!-- Linha 4 -->
+<div class="h-7 flex items-center bg-surface-container-lowest hover:bg-surface-container divide-x divide-outline-variant/20">
+<div class="w-7 h-full flex items-center justify-center"><input class="w-3 h-3" type="checkbox"/></div>
+<div class="w-8 h-full flex items-center justify-center text-transparent">·</div>
+<div class="w-32 px-space-xs truncate font-code-sm text-code-sm font-semibold text-primary">LAU-2024-0888</div>
+<div class="w-32 px-space-xs truncate text-on-surface-variant font-code-sm text-code-sm">23/05/2024 16:44</div>
+<div class="flex-1 min-w-[170px] px-space-xs truncate">Hospital Santa Clara & Unidade Cirúrgica</div>
+<div class="w-32 px-space-xs truncate font-code-sm text-code-sm text-on-surface-variant">52.341.009/0001-40</div>
+<div class="w-48 px-space-xs truncate">Grupo Gerador Diesel 500kVA + No-Break</div>
+<div class="w-40 px-space-xs truncate">Eng. Roberto Albuquerque</div>
+<div class="w-32 px-space-xs flex items-center">
+<span class="inline-flex items-center px-[6px] py-[1px] rounded text-[10px] font-semibold bg-surface-dim text-on-surface">
+<span class="w-1.5 h-1.5 rounded-full bg-outline mr-1"></span>Revisão Pendente
+            </span>
+</div>
+<div class="w-20 px-space-xs flex items-center justify-center gap-space-xs">
+<button class="text-secondary hover:text-primary" type="button"><span class="material-symbols-outlined text-[15px]">visibility</span></button>
+<button class="text-outline-variant cursor-not-allowed" type="button"><span class="material-symbols-outlined text-[15px]">picture_as_pdf</span></button>
+<button class="text-on-surface-variant hover:text-primary" type="button"><span class="material-symbols-outlined text-[15px]">edit</span></button>
+</div>
+</div>
+<!-- Linha 5 -->
+<div class="h-7 flex items-center bg-surface-container-low hover:bg-surface-container divide-x divide-outline-variant/20">
+<div class="w-7 h-full flex items-center justify-center"><input class="w-3 h-3" type="checkbox"/></div>
+<div class="w-8 h-full flex items-center justify-center text-transparent">·</div>
+<div class="w-32 px-space-xs truncate font-code-sm text-code-sm font-semibold text-primary">LAU-2024-0887</div>
+<div class="w-32 px-space-xs truncate text-on-surface-variant font-code-sm text-code-sm">23/05/2024 10:20</div>
+<div class="flex-1 min-w-[170px] px-space-xs truncate">Centro Empresarial Faria Lima Towers</div>
+<div class="w-32 px-space-xs truncate font-code-sm text-code-sm text-on-surface-variant">11.902.345/0002-19</div>
+<div class="w-48 px-space-xs truncate">Banco de Capacitores Automático 150kVAr</div>
+<div class="w-40 px-space-xs truncate">Eng. Alex Fabiano Longo</div>
+<div class="w-32 px-space-xs flex items-center">
+<span class="inline-flex items-center px-[6px] py-[1px] rounded text-[10px] font-semibold bg-primary-container text-on-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim mr-1"></span>Emitido
+            </span>
+</div>
+<div class="w-20 px-space-xs flex items-center justify-center gap-space-xs">
+<button class="text-secondary hover:text-primary" type="button"><span class="material-symbols-outlined text-[15px]">visibility</span></button>
+<button class="text-error hover:text-on-error-container" type="button"><span class="material-symbols-outlined text-[15px]">picture_as_pdf</span></button>
+<button class="text-on-surface-variant hover:text-primary" type="button"><span class="material-symbols-outlined text-[15px]">edit</span></button>
+</div>
+</div>
+<!-- Linha 6 -->
+<div class="h-7 flex items-center bg-surface-container-lowest hover:bg-surface-container divide-x divide-outline-variant/20">
+<div class="w-7 h-full flex items-center justify-center"><input class="w-3 h-3" type="checkbox"/></div>
+<div class="w-8 h-full flex items-center justify-center text-transparent">·</div>
+<div class="w-32 px-space-xs truncate font-code-sm text-code-sm font-semibold text-primary">LAU-2024-0886</div>
+<div class="w-32 px-space-xs truncate text-on-surface-variant font-code-sm text-code-sm">22/05/2024 15:10</div>
+<div class="flex-1 min-w-[170px] px-space-xs truncate">Supermercados Boa Praça Unidade 04</div>
+<div class="w-32 px-space-xs truncate font-code-sm text-code-sm text-on-surface-variant">08.773.201/0004-51</div>
+<div class="w-48 px-space-xs truncate">Termografia em Painéis e Cargas Críticas</div>
+<div class="w-40 px-space-xs truncate">Téc. Marcos Vinícius Prado</div>
+<div class="w-32 px-space-xs flex items-center">
+<span class="inline-flex items-center px-[6px] py-[1px] rounded text-[10px] font-semibold bg-primary-container text-on-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim mr-1"></span>Emitido
+            </span>
+</div>
+<div class="w-20 px-space-xs flex items-center justify-center gap-space-xs">
+<button class="text-secondary hover:text-primary" type="button"><span class="material-symbols-outlined text-[15px]">visibility</span></button>
+<button class="text-error hover:text-on-error-container" type="button"><span class="material-symbols-outlined text-[15px]">picture_as_pdf</span></button>
+<button class="text-on-surface-variant hover:text-primary" type="button"><span class="material-symbols-outlined text-[15px]">edit</span></button>
+</div>
+</div>
+<!-- Linha 7 -->
+<div class="h-7 flex items-center bg-surface-container-low hover:bg-surface-container divide-x divide-outline-variant/20">
+<div class="w-7 h-full flex items-center justify-center"><input class="w-3 h-3" type="checkbox"/></div>
+<div class="w-8 h-full flex items-center justify-center text-transparent">·</div>
+<div class="w-32 px-space-xs truncate font-code-sm text-code-sm font-semibold text-primary">LAU-2024-0885</div>
+<div class="w-32 px-space-xs truncate text-on-surface-variant font-code-sm text-code-sm">22/05/2024 09:30</div>
+<div class="flex-1 min-w-[170px] px-space-xs truncate">Tecelagem e Fiação Paulista S.A.</div>
+<div class="w-32 px-space-xs truncate font-code-sm text-code-sm text-on-surface-variant">61.229.400/0001-77</div>
+<div class="w-48 px-space-xs truncate">Análise de Qualidade de Energia (NR-10)</div>
+<div class="w-40 px-space-xs truncate">Eng. Alex Fabiano Longo</div>
+<div class="w-32 px-space-xs flex items-center">
+<span class="inline-flex items-center px-[6px] py-[1px] rounded text-[10px] font-semibold bg-error-container text-error">
+<span class="w-1.5 h-1.5 rounded-full bg-error mr-1"></span>Cancelado
+            </span>
+</div>
+<div class="w-20 px-space-xs flex items-center justify-center gap-space-xs">
+<button class="text-secondary hover:text-primary" type="button"><span class="material-symbols-outlined text-[15px]">visibility</span></button>
+<button class="text-outline-variant cursor-not-allowed" type="button"><span class="material-symbols-outlined text-[15px]">picture_as_pdf</span></button>
+<button class="text-on-surface-variant hover:text-primary" type="button"><span class="material-symbols-outlined text-[15px]">edit</span></button>
+</div>
+</div>
+<!-- Linha 8 -->
+<div class="h-7 flex items-center bg-surface-container-lowest hover:bg-surface-container divide-x divide-outline-variant/20">
+<div class="w-7 h-full flex items-center justify-center"><input class="w-3 h-3" type="checkbox"/></div>
+<div class="w-8 h-full flex items-center justify-center text-transparent">·</div>
+<div class="w-32 px-space-xs truncate font-code-sm text-code-sm font-semibold text-primary">LAU-2024-0884</div>
+<div class="w-32 px-space-xs truncate text-on-surface-variant font-code-sm text-code-sm">21/05/2024 17:15</div>
+<div class="flex-1 min-w-[170px] px-space-xs truncate">Parque Eólico Ventos do Sertão V</div>
+<div class="w-32 px-space-xs truncate font-code-sm text-code-sm text-on-surface-variant">29.103.541/0001-02</div>
+<div class="w-48 px-space-xs truncate">Subestação Elevadora 138kV - Disjuntores</div>
+<div class="w-40 px-space-xs truncate">Eng. Roberto Albuquerque</div>
+<div class="w-32 px-space-xs flex items-center">
+<span class="inline-flex items-center px-[6px] py-[1px] rounded text-[10px] font-semibold bg-primary-container text-on-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim mr-1"></span>Emitido
+            </span>
+</div>
+<div class="w-20 px-space-xs flex items-center justify-center gap-space-xs">
+<button class="text-secondary hover:text-primary" type="button"><span class="material-symbols-outlined text-[15px]">visibility</span></button>
+<button class="text-error hover:text-on-error-container" type="button"><span class="material-symbols-outlined text-[15px]">picture_as_pdf</span></button>
+<button class="text-on-surface-variant hover:text-primary" type="button"><span class="material-symbols-outlined text-[15px]">edit</span></button>
+</div>
+</div>
+<!-- Linha 9 -->
+<div class="h-7 flex items-center bg-surface-container-low hover:bg-surface-container divide-x divide-outline-variant/20">
+<div class="w-7 h-full flex items-center justify-center"><input class="w-3 h-3" type="checkbox"/></div>
+<div class="w-8 h-full flex items-center justify-center text-transparent">·</div>
+<div class="w-32 px-space-xs truncate font-code-sm text-code-sm font-semibold text-primary">LAU-2024-0883</div>
+<div class="w-32 px-space-xs truncate text-on-surface-variant font-code-sm text-code-sm">21/05/2024 13:50</div>
+<div class="flex-1 min-w-[170px] px-space-xs truncate">Condomínio Residencial Grand Parc</div>
+<div class="w-32 px-space-xs truncate font-code-sm text-code-sm text-on-surface-variant">07.892.115/0001-30</div>
+<div class="w-48 px-space-xs truncate">Laudo de Estanqueidade da Rede de Gás GLP</div>
+<div class="w-40 px-space-xs truncate">Eng. Alex Fabiano Longo</div>
+<div class="w-32 px-space-xs flex items-center">
+<span class="inline-flex items-center px-[6px] py-[1px] rounded text-[10px] font-semibold bg-primary-container text-on-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim mr-1"></span>Emitido
+            </span>
+</div>
+<div class="w-20 px-space-xs flex items-center justify-center gap-space-xs">
+<button class="text-secondary hover:text-primary" type="button"><span class="material-symbols-outlined text-[15px]">visibility</span></button>
+<button class="text-error hover:text-on-error-container" type="button"><span class="material-symbols-outlined text-[15px]">picture_as_pdf</span></button>
+<button class="text-on-surface-variant hover:text-primary" type="button"><span class="material-symbols-outlined text-[15px]">edit</span></button>
+</div>
+</div>
+</div>
+<!-- WPF DataPager / Foot Navigation -->
+<div class="h-8 bg-surface-container-low px-space-md flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant select-none border-t border-outline-variant/30">
+<div class="flex items-center gap-space-sm">
+<span class="font-code-sm text-code-sm font-semibold text-primary">Exibindo registros 1 a 9 de 1.482</span>
+<span class="text-outline">|</span>
+<span class="text-secondary font-semibold">1 registro selecionado</span>
+</div>
+<div class="flex items-center gap-[3px]">
+<button class="w-6 h-6 flex items-center justify-center rounded bg-surface-container-lowest hover:bg-surface-container font-code-sm text-code-sm font-bold shadow-sm" title="Primeira Página" type="button">|◄</button>
+<button class="w-6 h-6 flex items-center justify-center rounded bg-surface-container-lowest hover:bg-surface-container font-code-sm text-code-sm font-bold shadow-sm" title="Página Anterior" type="button">◄</button>
+<span class="px-space-xs text-on-surface">Página</span>
+<input class="w-8 h-6 bg-surface-container-lowest text-center rounded font-code-sm text-code-sm font-bold focus:outline-none shadow-sm" type="text" value="1"/>
+<span class="px-space-xs text-on-surface">de 60</span>
+<button class="w-6 h-6 flex items-center justify-center rounded bg-surface-container-lowest hover:bg-surface-container font-code-sm text-code-sm font-bold shadow-sm" title="Próxima Página" type="button">►</button>
+<button class="w-6 h-6 flex items-center justify-center rounded bg-surface-container-lowest hover:bg-surface-container font-code-sm text-code-sm font-bold shadow-sm" title="Última Página" type="button">►|</button>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span>Itens por pág:</span>
+<select class="h-6 bg-surface-container-lowest rounded px-space-xs font-code-sm text-code-sm focus:outline-none shadow-sm">
+<option>25</option>
+<option>50</option>
+<option>100</option>
+</select>
+</div>
+<div class="flex items-center gap-[2px]">
+<button class="h-6 px-space-xs bg-surface-container-lowest hover:bg-surface-container text-on-surface rounded font-code-sm text-code-sm font-semibold flex items-center gap-[2px] shadow-sm" type="button">
+<span class="material-symbols-outlined text-[13px] text-secondary">table_rows</span>
+<span>CSV</span>
+</button>
+<button class="h-6 px-space-xs bg-surface-container-lowest hover:bg-surface-container text-on-surface rounded font-code-sm text-code-sm font-semibold flex items-center gap-[2px] shadow-sm" type="button">
+<span class="material-symbols-outlined text-[13px] text-primary">table_chart</span>
+<span>XLSX</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Inspection DockPanel / Property Inspector -->
+<div class="col-span-12 xl:col-span-4 flex flex-col bg-surface-container-lowest rounded shadow-sm overflow-hidden">
+<!-- DockPanel Header -->
+<div class="h-7 bg-primary px-space-md flex items-center justify-between text-on-primary select-none">
+<div class="flex items-center gap-space-xs truncate">
+<span class="material-symbols-outlined text-[16px] text-secondary-fixed-dim">verified</span>
+<span class="font-label-md text-label-md font-semibold truncate">Detalhes do Laudo: LAU-2024-0891</span>
+</div>
+<div class="flex items-center gap-[2px]">
+<button class="hover:bg-primary-container p-[2px] rounded" title="Fixar Painel" type="button"><span class="material-symbols-outlined text-[14px]">push_pin</span></button>
+<button class="hover:bg-primary-container p-[2px] rounded" title="Maximizar Painel" type="button"><span class="material-symbols-outlined text-[14px]">open_in_full</span></button>
+</div>
+</div>
+<!-- DockPanel Tab Navigation -->
+<div class="h-6 bg-surface-container-low flex items-center px-space-xs gap-[2px] border-b border-outline-variant/30 select-none">
+<button class="px-space-md h-full bg-surface-container-lowest text-primary font-label-sm text-label-sm font-bold shadow-sm" type="button">Resumo Geral</button>
+<button class="px-space-md h-full text-on-surface-variant hover:bg-surface-container font-label-sm text-label-sm" type="button">Equipamentos (3)</button>
+<button class="px-space-md h-full text-on-surface-variant hover:bg-surface-container font-label-sm text-label-sm" type="button">Parecer Técnico</button>
+<button class="px-space-md h-full text-on-surface-variant hover:bg-surface-container font-label-sm text-label-sm" type="button">Histórico (5)</button>
+</div>
+<!-- DockPanel Content Body -->
+<div class="p-space-md flex flex-col gap-space-md overflow-y-auto max-h-[580px]">
+<!-- Status & Identification Strip -->
+<div class="bg-surface-container-low p-space-sm rounded flex items-center justify-between shadow-sm">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Protocolo de Registro</span>
+<span class="font-code-sm text-code-sm font-bold text-primary">ART-SP-2024-9981240</span>
+</div>
+<span class="px-space-md py-[2px] rounded text-[11px] font-bold bg-primary text-on-primary">
+            LAUDO CONCLUÍDO & EMITIDO
+          </span>
+</div>
+<!-- GroupBox: Informações do Cliente -->
+<div class="bg-surface-container-low p-space-sm rounded shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs pb-[2px] border-b border-outline-variant/20">
+<span class="material-symbols-outlined text-[15px] text-secondary">corporate_fare</span>
+<span class="font-label-md text-label-md font-bold text-primary uppercase text-[10px] tracking-wide">Dados da Contratante</span>
+</div>
+<div class="grid grid-cols-2 gap-space-xs text-body-sm font-body-sm pt-space-xs">
+<div>
+<span class="text-on-surface-variant block text-[10px]">Razão Social:</span>
+<span class="font-semibold text-on-surface">Indústria Metalúrgica Alvorada S.A.</span>
+</div>
+<div>
+<span class="text-on-surface-variant block text-[10px]">CNPJ:</span>
+<span class="font-code-sm text-code-sm text-on-surface">47.829.102/0001-94</span>
+</div>
+<div class="col-span-2">
+<span class="text-on-surface-variant block text-[10px]">Localização Inspecionada:</span>
+<span class="text-on-surface">Rod. Anhanguera, km 112 - Distrito Industrial, Campinas - SP</span>
+</div>
+</div>
+</div>
+<!-- Technical Telemetry Inline Visual / Asset Diagnostic -->
+<div class="bg-surface-container-lowest p-space-sm rounded shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center justify-between pb-[2px] border-b border-outline-variant/20">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[15px] text-primary">analytics</span>
+<span class="font-label-md text-label-md font-bold text-primary uppercase text-[10px] tracking-wide">Parâmetros Térmicos Inspecionados</span>
+</div>
+<span class="font-code-sm text-code-sm text-secondary font-semibold">T_máx: 64.2 °C (Normal)</span>
+</div>
+<!-- Inline Sparkline / Histogram SVG -->
+<div class="pt-space-xs">
+<svg class="w-full h-14" fill="none" viewbox="0 0 320 60">
+<path class="text-secondary" d="M 0 50 L 30 48 L 60 45 L 90 38 L 120 42 L 150 25 L 180 32 L 210 28 L 240 22 L 270 26 L 300 18 L 320 20" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+<path class="text-secondary/10" d="M 0 50 L 30 48 L 60 45 L 90 38 L 120 42 L 150 25 L 180 32 L 210 28 L 240 22 L 270 26 L 300 18 L 320 20 L 320 58 L 0 58 Z" fill="currentColor"></path>
+<!-- Threshold guideline -->
+<line class="text-error" stroke="currentColor" stroke-dasharray="3,3" stroke-width="1.2" x1="0" x2="320" y1="15" y2="15"></line>
+<text class="text-error font-code-sm text-[9px]" fill="currentColor" x="5" y="12">Limite Crítico NBR 5410 (75°C)</text>
+<circle class="text-primary" cx="300" cy="18" fill="currentColor" r="3.5"></circle>
+</svg>
+<div class="flex justify-between font-code-sm text-[10px] text-on-surface-variant pt-space-xs">
+<span>Fase R: 58.4°C</span>
+<span>Fase S: 61.1°C</span>
+<span>Fase T: 64.2°C</span>
+<span>Delta-T: 5.8°C</span>
+</div>
+</div>
+</div>
+<!-- Equipment Photo Inspection Placeholder -->
+<div class="bg-surface-container-low p-space-sm rounded shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center justify-between pb-[2px] border-b border-outline-variant/20">
+<span class="font-label-md text-label-md font-bold text-primary uppercase text-[10px] tracking-wide">Registro Fotográfico / Termograma</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">IMG_20240524_01.JPG</span>
+</div>
+<div class="w-full h-28 relative rounded overflow-hidden mt-space-xs">
+<img class="w-full h-full object-cover" data-alt="Close-up industrial technical photograph of a high-voltage electrical dry transformer terminal inside a clean manufacturing facility substation with warning labels, copper busbars, and technical diagnostic telemetry display in daylight tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxOv6Px8nPkO9PPQ8B0qKc65S4lGa7jPlF77wOW7IP90qvGavGDoXei4MAq2iDs0NwRzxotM1Sbl-NQOA617UsKJl03QfoRICyqQl1rYKqzh3UtzJw90vbY0ujTazq3rR0VqtJao_BIZuHwk4pyy4dSNKg519WJ5Nikg6mchb6KL0Z1mGEgnAdXryAohF5muWFywstszYmhFnN9bEatNBwybPUc0j-MB8hxCWp5bfy0W6MBHpV6M-JdQ"/>
+<div class="absolute bottom-1 right-1 bg-primary/80 backdrop-blur-sm text-on-primary px-space-xs py-[1px] font-code-sm text-[9px] rounded">
+              Termômetro Fluke Ti480 PRO
+            </div>
+</div>
+</div>
+<!-- Parecer Técnico Conclusivo & Digital Signature -->
+<div class="bg-surface-container-low p-space-sm rounded shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs pb-[2px] border-b border-outline-variant/20">
+<span class="material-symbols-outlined text-[15px] text-secondary">assignment_turned_in</span>
+<span class="font-label-md text-label-md font-bold text-primary uppercase text-[10px] tracking-wide">Conclusão do Engenheiro</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface leading-snug">
+            Equipamento ensaiado de acordo com a norma ABNT NBR 5356. Os gradientes térmicos e a rigidez dielétrica do isolamento encontram-se rigorosamente dentro dos parâmetros aceitáveis de operação contínua. Próxima inspeção recomendada: Maio/2025.
+          </p>
+<div class="mt-space-xs p-space-xs bg-surface-container-lowest rounded flex items-center gap-space-md shadow-sm">
+<!-- QR Code Simulation -->
+<div class="w-12 h-12 bg-surface-container-highest p-[2px] flex items-center justify-center rounded">
+<svg class="w-10 h-10 text-primary" fill="currentColor" viewbox="0 0 24 24">
+<path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm10-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm14 0h4v2h-4v-2zm-4-2h2v4h-2v-4zm2 4h2v4h-2v-4zm2-2h4v2h-4v-2zm-6 2h2v2h-2v-2zm4 2h2v2h-2v-2zM6 6h2v2H6V6zm12 0h2v2h-2V6zM6 18h2v2H6v-2z"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<span class="font-label-sm text-label-sm font-bold text-primary block truncate">Assinado Digitalmente (ICP-Brasil)</span>
+<span class="font-code-sm text-code-sm text-on-surface block truncate">Eng. Alex Fabiano Longo</span>
+<span class="font-code-sm text-[10px] text-on-surface-variant block">CREA-SP: 192837/D • Validação: SHA256-B81F</span>
+</div>
+</div>
+</div>
+</div>
+<!-- DockPanel Action Bar Footer -->
+<div class="h-8 bg-surface-container-low px-space-md flex items-center justify-end gap-space-xs border-t border-outline-variant/30">
+<button class="h-6 px-space-sm bg-surface-container-lowest hover:bg-surface-container-high rounded text-on-surface font-label-md text-label-md shadow-sm flex items-center gap-[2px]" type="button">
+<span class="material-symbols-outlined text-[14px]">edit_note</span>
+<span>Adicionar Nota</span>
+</button>
+<button class="h-6 px-space-md bg-primary text-on-primary hover:bg-primary-container rounded font-label-md text-label-md font-semibold shadow-sm flex items-center gap-[2px]" type="button">
+<span class="material-symbols-outlined text-[14px]">print</span>
+<span>Imprimir Dossiê</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Simulated Windows WPF Floating Context Menu (Interactive Preview) -->
+<div class="hidden absolute z-50 bg-surface-container-lowest rounded shadow-xl w-60 py-space-xs text-on-surface font-body-sm text-body-sm select-none" id="wpf-context-menu">
+<button class="w-full px-space-md py-[3px] flex items-center gap-space-md hover:bg-primary hover:text-on-primary text-left" type="button">
+<span class="material-symbols-outlined text-[15px] text-secondary">open_in_new</span>
+<span class="flex-1">Abrir Formulário Completo</span>
+<span class="font-code-sm text-[10px] text-outline">F4</span>
+</button>
+<button class="w-full px-space-md py-[3px] flex items-center gap-space-md hover:bg-primary hover:text-on-primary text-left" type="button">
+<span class="material-symbols-outlined text-[15px] text-on-surface-variant">print</span>
+<span class="flex-1">Imprimir Laudo Técnico</span>
+<span class="font-code-sm text-[10px] text-outline">Ctrl+P</span>
+</button>
+<button class="w-full px-space-md py-[3px] flex items-center gap-space-md hover:bg-primary hover:text-on-primary text-left" type="button">
+<span class="material-symbols-outlined text-[15px] text-error">picture_as_pdf</span>
+<span class="flex-1">Exportar como PDF...</span>
+</button>
+<button class="w-full px-space-md py-[3px] flex items-center gap-space-md hover:bg-primary hover:text-on-primary text-left" type="button">
+<span class="material-symbols-outlined text-[15px] text-secondary">content_copy</span>
+<span class="flex-1">Duplicar como Novo Laudo</span>
+</button>
+<div class="my-space-xs border-t border-outline-variant/30"></div>
+<button class="w-full px-space-md py-[3px] flex items-center gap-space-md hover:bg-primary hover:text-on-primary text-left" type="button">
+<span class="material-symbols-outlined text-[15px] text-on-surface-variant">history</span>
+<span class="flex-1">Histórico de Revisões</span>
+</button>
+<button class="w-full px-space-md py-[3px] flex items-center gap-space-md hover:bg-primary hover:text-on-primary text-left" type="button">
+<span class="material-symbols-outlined text-[15px] text-on-surface-variant">settings_suggest</span>
+<span class="flex-1">Propriedades do Registro</span>
+<span class="font-code-sm text-[10px] text-outline">Alt+Enter</span>
+</button>
+</div>
+</div>
+<script>
+  // Right-click context menu simulation for WPF desktop feel
+  const selectedRow = document.getElementById('row-selected-laudo');
+  const contextMenu = document.getElementById('wpf-context-menu');
+
+  if (selectedRow && contextMenu) {
+    selectedRow.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+      contextMenu.style.left = e.pageX + 'px';
+      contextMenu.style.top = e.pageY + 'px';
+      contextMenu.classList.remove('hidden');
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!contextMenu.contains(e.target)) {
+        contextMenu.classList.add('hidden');
+      }
+    });
+  }
+
+  // Double click on table rows triggers active selection visual
+  const rows = document.querySelectorAll('.divide-y > div');
+  rows.forEach(row => {
+    row.addEventListener('click', function() {
+      rows.forEach(r => {
+        r.classList.remove('bg-secondary-fixed/40', 'text-primary');
+        const arrow = r.querySelector('.material-symbols-outlined.text-primary');
+        if (arrow && arrow.innerText === 'arrow_right') {
+          arrow.parentElement.innerHTML = '·';
+        }
+      });
+      this.classList.add('bg-secondary-fixed/40');
+    });
+  });
+</script></main></div><footer class="fixed bottom-0 left-0 right-0 h-6 bg-primary-container text-on-primary font-code-sm text-code-sm flex items-center justify-between px-space-md z-50 divide-x divide-on-primary-container/20 border-t border-primary"><div class="flex items-center gap-space-md pr-space-md truncate"><span class="material-symbols-outlined text-[14px] text-on-tertiary-container">corporate_fare</span><span>STRUCTUM Engenharia & Laudos Ltda.</span></div><div class="flex items-center gap-space-md px-space-md truncate"><span class="material-symbols-outlined text-[14px] text-secondary-fixed-dim">badge</span><span>Eng. Alex Fabiano Longo (Administrador)</span></div><div class="flex items-center gap-space-md px-space-md truncate text-secondary-fixed-dim"><span class="inline-block w-2 h-2 rounded-full bg-[#34D399]"></span><span>🟢 Conectado ao SQL Server (Latência: 12ms)</span></div><div class="flex items-center gap-space-md px-space-md truncate"><span>Total: 1.482 registros</span></div><div class="flex items-center gap-space-md pl-space-md truncate text-on-primary-container"><span>STRUCTUM v3.4.2 | Dev: Alex Fabiano Longo</span></div></footer></body></html>

@@ -1,0 +1,27 @@
+// ==============================================================================
+// STRUCTUM — Prisma Schema Foundation
+//
+// Fase Inicial: MySQL
+// Fase Futura: PostgreSQL em servidor próprio
+//
+// NOTAS DE ARQUITETURA PARA MIGRAÇÃO:
+// 1. A migração de MySQL para PostgreSQL NÃO é apenas a troca da DATABASE_URL.
+// 2. O provider abaixo deve ser alterado de "mysql" para "postgresql".
+// 3. Diferenças entre MySQL e PostgreSQL a serem observadas:
+//    - Tipos de dados específicos (ex: TINYINT(1) vs BOOLEAN, JSON vs JSONB).
+//    - Suporte a Enums nativos no PostgreSQL vs representação no MySQL.
+//    - Sensibilidade a maiúsculas/minúsculas (Collation / Case-sensitivity).
+//    - Índices Full-Text e Triggers com sintaxes distintas.
+//    - Geração de IDs (AUTO_INCREMENT no MySQL vs IDENTITY/SERIAL/Sequences no PG).
+// 4. Por instrução desta etapa, tabelas de negócio e migrations de produção
+//    NÃO foram criadas aqui, reservando esta fase para validar a fundação.
+// ==============================================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}

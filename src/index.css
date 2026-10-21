@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+}
+
+/* Estilização fiel a janelas Avalonia UI / Windows 11 Fluent */
+.acrylic-glass {
+  background: rgba(13, 22, 38, 0.84);
+  backdrop-filter: blur(24px) saturate(140%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75), 
+              0 0 0 1px rgba(255, 255, 255, 0.05),
+              inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.titlebar-btn-close:hover {
+  background-color: #e81123 !important;
+  color: #ffffff !important;
+}
+
+.avalonia-input {
+  background-color: rgba(18, 29, 49, 0.75);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.avalonia-input:hover {
+  background-color: rgba(23, 37, 63, 0.9);
+  border-color: rgba(148, 163, 184, 0.45);
+}
+.avalonia-input:focus {
+  background-color: rgba(15, 26, 44, 0.95);
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+  outline: none;
+}
+
+.status-dot-pulse {
+  box-shadow: 0 0 8px #22c55e;
+}
+
+/* Custom Scrollbars compactas padrão Desktop */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.3);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.6);
+}

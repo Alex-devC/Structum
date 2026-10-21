@@ -1,0 +1,6 @@
+{
+  "name": "STRUCTUM",
+  "description": "STRUCTUM — Plataforma corporativa empresarial de engenharia, gestão estrutural de ativos e laudos técnicos industriais com backend Fastify, Zod e Prisma.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
