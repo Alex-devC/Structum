@@ -11,7 +11,7 @@ async function start() {
       host: env.HOST,
     });
     console.log(`🚀 [STRUCTUM Backend] Servidor Fastify ativo em http://${env.HOST}:${env.PORT}`);
-    console.log(`📋 [STRUCTUM Backend] Endpoint de saúde disponível em: http://${env.HOST}:${env.PORT}/api/health`);
+    console.log(`📋 [STRUCTUM Backend] Endpoint de saúde disponível em: http://${env.HOST}:${env.PORT}${env.API_PREFIX}/health`);
     console.log(`🔒 [STRUCTUM Backend] Ambiente: ${env.NODE_ENV}`);
     console.log(
       `💾 [STRUCTUM Backend] Banco de dados: ${

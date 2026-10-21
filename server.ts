@@ -19,9 +19,9 @@ async function startServer() {
 
   console.log('⚡ [STRUCTUM] Engine Fastify inicializada com sucesso.');
 
-  // Delega todas as requisições de /api/* diretamente para o Fastify
+  // Delega todas as requisições com prefixo de API diretamente para o Fastify
   // Utiliza fastify.inject para executar todo o pipeline do Fastify (Zod, Hooks, Handlers)
-  server.all('/api*', async (req, res) => {
+  server.all(`${env.API_PREFIX}*`, async (req, res) => {
     try {
       const fastifyResponse = await fastifyApp.inject({
         method: req.method as any,
@@ -49,7 +49,7 @@ async function startServer() {
 
   const httpServer = http.createServer(server);
 
-  const isProduction = process.env.NODE_ENV === 'production';
+  const isProduction = env.NODE_ENV === 'production';
 
   if (!isProduction) {
     // Modo de Desenvolvimento: monta Vite middleware com HMR desabilitado (conforme constraints do ambiente)
@@ -70,16 +70,13 @@ async function startServer() {
     });
   }
 
-  const port = Number(process.env.PORT) || 3000;
-  const host = '0.0.0.0';
-
-  httpServer.listen(port, host, () => {
+  httpServer.listen(env.PORT, env.HOST, () => {
     console.log(`\n======================================================`);
-    console.log(`  STRUCTUM — Plataforma Empresarial Desktop [v3.4.2]`);
+    console.log(`  STRUCTUM — Plataforma Empresarial Desktop [v${env.APP_VERSION}]`);
     console.log(`  Desenvolvido por: Alex Fabiano Longo`);
     console.log(`  Ambiente: ${env.NODE_ENV}`);
-    console.log(`  Servidor ouvindo em: http://${host}:${port}`);
-    console.log(`  API Health Endpoint: http://${host}:${port}/api/health`);
+    console.log(`  Servidor ouvindo em: http://${env.HOST}:${env.PORT}`);
+    console.log(`  API Health Endpoint: http://${env.HOST}:${env.PORT}${env.API_PREFIX}/health`);
     console.log(`======================================================\n`);
   });
 }

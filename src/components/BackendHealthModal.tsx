@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Activity, Database, Server, CheckCircle2, AlertTriangle, RefreshCw, X, Copy, Check, Info } from 'lucide-react';
+import { API_CONFIG, getApiUrl } from '../config/api';
 
 interface HealthData {
   status: string;
@@ -34,7 +35,7 @@ export const BackendHealthModal: React.FC<BackendHealthModalProps> = ({ isOpen, 
     setError(null);
     const start = performance.now();
     try {
-      const res = await fetch('/api/health');
+      const res = await fetch(getApiUrl(API_CONFIG.endpoints.health));
       const time = Math.round(performance.now() - start);
       setLatency(time);
 
@@ -100,7 +101,7 @@ export const BackendHealthModal: React.FC<BackendHealthModalProps> = ({ isOpen, 
           <div className="flex items-center gap-2">
             <Activity className="w-4 h-4 text-cyan-400" />
             <span className="font-semibold text-slate-200">
-              Diagnóstico de Infraestrutura do Backend — GET /api/health
+              Diagnóstico de Infraestrutura do Backend — GET {API_CONFIG.endpoints.health}
             </span>
           </div>
           <button
@@ -185,7 +186,7 @@ export const BackendHealthModal: React.FC<BackendHealthModalProps> = ({ isOpen, 
           {data && (
             <div className="space-y-1.5">
               <div className="flex items-center justify-between text-[11px] text-slate-400">
-                <span>Payload retornado por <code className="text-cyan-300 font-mono">GET /api/health</code>:</span>
+                <span>Payload retornado por <code className="text-cyan-300 font-mono">GET {API_CONFIG.endpoints.health}</code>:</span>
                 <button
                   onClick={copyToClipboard}
                   className="flex items-center gap-1 text-slate-300 hover:text-cyan-300 transition-colors"

@@ -24,8 +24,8 @@ export async function healthRoutes(fastify: FastifyInstance, _options: FastifyPl
 
     const response: HealthResponse = {
       status: 'ok',
-      service: 'STRUCTUM-Backend-Core',
-      version: '3.4.2',
+      service: env.SERVICE_NAME,
+      version: env.APP_VERSION,
       timestamp: new Date().toISOString(),
       uptimeSeconds: Math.floor(process.uptime()),
       environment: env.NODE_ENV,

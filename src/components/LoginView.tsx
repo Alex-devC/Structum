@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ShieldCheck, Database, Key, User, Lock, Eye, EyeOff, CreditCard, Network, Monitor, Activity } from 'lucide-react';
+import { API_CONFIG, getApiUrl } from '../config/api';
 
 interface LoginViewProps {
   onLoginSuccess: () => void;
@@ -18,7 +19,7 @@ export const LoginView: React.FC<LoginViewProps> = ({ onLoginSuccess, onOpenHeal
   });
 
   React.useEffect(() => {
-    fetch('/api/health')
+    fetch(getApiUrl(API_CONFIG.endpoints.health))
       .then(res => res.json())
       .then(data => {
         if (data?.database) {

@@ -5,6 +5,7 @@ import {
   Download, Printer, Table, Eye, ShieldCheck, CheckCircle2,
   Calendar, Layers, Sliders, ChevronLeft, ChevronRight, LogOut, Activity
 } from 'lucide-react';
+import { API_CONFIG, getApiUrl } from '../config/api';
 
 interface WorkspaceViewProps {
   onLogout: () => void;
@@ -127,7 +128,7 @@ export const WorkspaceView: React.FC<WorkspaceViewProps> = ({ onLogout, onOpenHe
   });
 
   React.useEffect(() => {
-    fetch('/api/health')
+    fetch(getApiUrl(API_CONFIG.endpoints.health))
       .then(res => res.json())
       .then(data => {
         if (data?.database) {

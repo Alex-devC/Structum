@@ -45,8 +45,8 @@ export function buildApp(opts: FastifyServerOptions = {}): FastifyInstance {
       const allowedOrigins = env.CORS_ORIGIN.split(',').map(s => s.trim()).filter(Boolean);
 
       // Adiciona dinamicamente APP_URL caso injetada pela infraestrutura (ex: Cloud Run)
-      if (process.env.APP_URL) {
-        allowedOrigins.push(process.env.APP_URL.trim());
+      if (env.APP_URL) {
+        allowedOrigins.push(env.APP_URL.trim());
       }
 
       const isAllowed = allowedOrigins.some(allowed => {
@@ -69,8 +69,8 @@ export function buildApp(opts: FastifyServerOptions = {}): FastifyInstance {
     credentials: true,
   });
 
-  // Registro das rotas da API com prefixo /api
-  app.register(healthRoutes, { prefix: '/api' });
+  // Registro das rotas da API com prefixo centralizado
+  app.register(healthRoutes, { prefix: env.API_PREFIX });
 
   return app;
 }

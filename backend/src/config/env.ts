@@ -13,6 +13,12 @@ const envSchema = z.object({
   CORS_ORIGIN: z.string().optional(),
   // DATABASE_URL: NÃO é obrigatória em desenvolvimento para permitir trabalhar sem banco de dados configurado
   DATABASE_URL: z.string().trim().min(1).optional(),
+  // APP_URL: URL do frontend/serviço injetada pela infraestrutura de hospedagem (ex: Cloud Run no AI Studio)
+  APP_URL: z.string().optional(),
+  // Metadados do Serviço
+  SERVICE_NAME: z.string().default('STRUCTUM-Backend-Core'),
+  APP_VERSION: z.string().default('3.4.2'),
+  API_PREFIX: z.string().default('/api'),
 });
 
 const parseEnv = () => {
