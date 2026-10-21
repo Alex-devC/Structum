@@ -1,20 +1,21 @@
 // ==============================================================================
-// STRUCTUM — Prisma Schema Foundation
+// STRUCTUM — Prisma Schema (Modelagem Inicial)
 //
-// Fase Inicial: MySQL
-// Fase Futura: PostgreSQL em servidor próprio
+// Versão do Sistema: 3.4.2
+// Desenvolvedor: Alex Fabiano Longo
 //
-// NOTAS DE ARQUITETURA PARA MIGRAÇÃO:
-// 1. A migração de MySQL para PostgreSQL NÃO é apenas a troca da DATABASE_URL.
-// 2. O provider abaixo deve ser alterado de "mysql" para "postgresql".
-// 3. Diferenças entre MySQL e PostgreSQL a serem observadas:
-//    - Tipos de dados específicos (ex: TINYINT(1) vs BOOLEAN, JSON vs JSONB).
-//    - Suporte a Enums nativos no PostgreSQL vs representação no MySQL.
-//    - Sensibilidade a maiúsculas/minúsculas (Collation / Case-sensitivity).
-//    - Índices Full-Text e Triggers com sintaxes distintas.
-//    - Geração de IDs (AUTO_INCREMENT no MySQL vs IDENTITY/SERIAL/Sequences no PG).
-// 4. Por instrução desta etapa, tabelas de negócio e migrations de produção
-//    NÃO foram criadas aqui, reservando esta fase para validar a fundação.
+// Modelos Iniciais:
+// 1. Empresa: Cadastro corporativo de matrizes e filiais
+// 2. Usuario: Credenciais corporativas e identificação
+// 3. PerfilPermissao: Perfis de acesso e autorização (RBAC)
+// 4. UsuarioEmpresa: Associação n:m permitindo multi-empresa com perfis específicos
+// 5. Terminal: Registro e controle de estações/dispositivos desktop Windows
+// 6. ConfiguracaoSistema: Parâmetros operacionais (segredos permanecem em .env)
+//
+// NOTAS DE ARQUITETURA PARA MIGRAÇÃO FUTURA:
+// - Provider atual: "mysql". Futura migração para PostgreSQL em servidor próprio.
+// - IDs gerados via cuid() para evitar colisões entre bases distribuídas.
+// - Mapeamento explícito de tabelas via @@map em snake_case.
 // ==============================================================================
 
 generator client {
@@ -24,4 +25,149 @@ generator client {
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+// ------------------------------------------------------------------------------
+// 1. MODELO: Empresa
+// Representa as organizações corporativas (matriz e filiais) no Structum
+// ------------------------------------------------------------------------------
+model Empresa {
+  id               String   @id @default(cuid())
+  razaoSocial      String   @map("razao_social") @db.VarChar(191)
+  nomeFantasia     String   @map("nome_fantasia") @db.VarChar(191)
+  cnpj             String   @unique @db.VarChar(18)
+  inscricaoEstadual String? @map("inscricao_estadual") @db.VarChar(30)
+  email            String?  @db.VarChar(191)
+  telefone         String?  @db.VarChar(30)
+  ativo            Boolean  @default(true)
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
+
+  // Relacionamentos
+  usuarios         UsuarioEmpresa[]
+  terminais        Terminal[]
+  configuracoes    ConfiguracaoSistema[]
+
+  @@map("empresas")
+}
+
+// ------------------------------------------------------------------------------
+// 2. MODELO: Usuario
+// Operadores, engenheiros e administradores do sistema
+// ------------------------------------------------------------------------------
+model Usuario {
+  id               String   @id @default(cuid())
+  nome             String   @db.VarChar(191)
+  email            String   @unique @db.VarChar(191)
+  senhaHash        String   @map("senha_hash") @db.VarChar(255)
+  cpf              String?  @unique @db.VarChar(14)
+  registroProfissional String? @map("registro_profissional") @db.VarChar(50) // Ex: CREA / CAU
+  cargo            String?  @db.VarChar(100)
+  telefone         String?  @db.VarChar(30)
+  ativo            Boolean  @default(true)
+  ultimoAcesso     DateTime? @map("ultimo_acesso")
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
+
+  // Relacionamentos: Associação com empresas
+  empresas         UsuarioEmpresa[]
+
+  @@map("usuarios")
+}
+
+// ------------------------------------------------------------------------------
+// 3. MODELO: PerfilPermissao
+// Perfis de acesso para controle de privilégios (RBAC)
+// ------------------------------------------------------------------------------
+model PerfilPermissao {
+  id               String   @id @default(cuid())
+  nome             String   @unique @db.VarChar(100) // Ex: Administrador, Engenheiro, Técnico
+  descricao        String?  @db.VarChar(255)
+  permissoes       String   @default("[]") @map("permissoes") @db.Text // JSON serializado com chaves de permissão
+  ativo            Boolean  @default(true)
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
+
+  // Relacionamentos
+  usuariosEmpresas UsuarioEmpresa[]
+
+  @@map("perfis_permissao")
+}
+
+// ------------------------------------------------------------------------------
+// 4. MODELO: UsuarioEmpresa (Tabela de Junção / Associação n:m)
+// Permite que um usuário acesse múltiplas empresas com perfis dedicados
+// ------------------------------------------------------------------------------
+model UsuarioEmpresa {
+  id               String   @id @default(cuid())
+  usuarioId        String   @map("usuario_id")
+  empresaId        String   @map("empresa_id")
+  perfilId         String   @map("perfil_id")
+  isEmpresaPadrao  Boolean  @default(false) @map("is_empresa_padrao")
+  ativo            Boolean  @default(true)
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
+
+  // Relações
+  usuario          Usuario         @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  empresa          Empresa         @relation(fields: [empresaId], references: [id], onDelete: Cascade)
+  perfil           PerfilPermissao @relation(fields: [perfilId], references: [id], onDelete: Restrict)
+
+  // Restrição: o usuário só pode ter um registro de associação por empresa
+  @@unique([usuarioId, empresaId], name: "uk_usuario_empresa")
+  @@index([usuarioId])
+  @@index([empresaId])
+  @@index([perfilId])
+  @@map("usuarios_empresas")
+}
+
+// ------------------------------------------------------------------------------
+// 5. MODELO: Terminal
+// Controle de terminais e estações desktop autorizadas (Windows / Avalonia Client)
+// ------------------------------------------------------------------------------
+model Terminal {
+  id               String   @id @default(cuid())
+  codigoIdentificador String @unique @map("codigo_identificador") @db.VarChar(100) // Ex: "ENG-PROD-BR01"
+  nome             String   @db.VarChar(100) // Ex: "Estação Engenharia Elétrica 01"
+  empresaId        String?  @map("empresa_id")
+  enderecoIp       String?  @map("endereco_ip") @db.VarChar(45) // Suporta IPv4 e IPv6
+  macAddress       String?  @map("mac_address") @db.VarChar(17)
+  sistemaOperacional String? @map("sistema_operacional") @db.VarChar(100) // Ex: "Windows 11 Pro 64-bit"
+  versaoApp        String?  @map("versao_app") @db.VarChar(30) // Ex: "3.4.2"
+  ativo            Boolean  @default(true)
+  autorizado       Boolean  @default(true)
+  ultimoAcesso     DateTime? @map("ultimo_acesso")
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
+
+  // Relações
+  empresa          Empresa? @relation(fields: [empresaId], references: [id], onDelete: SetNull)
+
+  @@index([empresaId])
+  @@map("terminais")
+}
+
+// ------------------------------------------------------------------------------
+// 6. MODELO: ConfiguracaoSistema
+// Configurações operacionais e parâmetros empresariais armazenados no banco.
+// SEGURANÇA: Chaves privadas, credenciais e senhas NÃO devem ser gravadas aqui,
+// permanecendo estritamente no ambiente do servidor (.env).
+// ------------------------------------------------------------------------------
+model ConfiguracaoSistema {
+  id               String   @id @default(cuid())
+  chave            String   @unique @db.VarChar(100) // Ex: "SISTEMA_TITULO_EMPRESA", "DIAS_ALERTA_REVISAO"
+  valor            String   @db.Text
+  descricao        String?  @db.VarChar(255)
+  categoria        String   @default("GERAL") @db.VarChar(50) // Ex: "OPERACIONAL", "INTERFACE", "EXPIRACAO"
+  empresaId        String?  @map("empresa_id") // Nulo se for global, ou preenchido se for da empresa
+  isPublica        Boolean  @default(false) @map("is_publica") // Visível para parâmetros de UI não autenticada
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
+
+  // Relações
+  empresa          Empresa? @relation(fields: [empresaId], references: [id], onDelete: Cascade)
+
+  @@index([categoria])
+  @@index([empresaId])
+  @@map("configuracoes_sistema")
 }
